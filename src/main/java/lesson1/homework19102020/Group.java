@@ -19,13 +19,14 @@ public class Group {
     }
 
     private Employee[] employees = new Employee[10];
-    private int empNumber = -1;
+    private int empNumber = 0;
 
     public void addEmp(Employee employee) {
         if (empNumber < employees.length){
             for (int i = 0; i < employees.length; i++) {
                 if (employees[i] == null) {
                     employees[i] = employee;
+                    empNumber++;
                     break;
                 }
             }
@@ -45,7 +46,7 @@ public class Group {
 
     public void cleanGroup() {
         Arrays.fill(employees, null);
-        empNumber = -1;
+        empNumber = 0;
     }
 
     public void getEmpFromGroup() {
@@ -73,6 +74,8 @@ public class Group {
         group2.addEmp(new Employee("Имя7", "email1@mail.ru", 25, "Тестировщик", group2));
         group2.addEmp(new Employee("Имя8", "email1@mail.ru", 25, "Тестировщик", group2));
         group2.addEmp(new Employee("Имя9", "email1@mail.ru", 25, "Тестировщик", group2));
+        group2.addEmp(new Employee("Имя10", "email1@mail.ru", 25, "Тестировщик", group2));
+        group2.addEmp(new Employee("Имя10", "email1@mail.ru", 25, "Тестировщик", group2));
         group2.addEmp(new Employee("Имя10", "email1@mail.ru", 25, "Тестировщик", group2));
         //group2.removeEmp(0);
         //group2.cleanGroup();
