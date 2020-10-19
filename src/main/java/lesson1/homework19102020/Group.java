@@ -18,15 +18,17 @@ public class Group {
         this.name = name;
     }
 
-    private Employee[] employees = new Employee[10];
-    private int empNumber = 0;
+    private static final int MAX_EMPLOYEE_COUNT = 10;
+
+    private Employee[] employees = new Employee[MAX_EMPLOYEE_COUNT];
+    private int n = 0;
 
     public void addEmp(Employee employee) {
-        if (empNumber < employees.length){
+        if (n < employees.length){
             for (int i = 0; i < employees.length; i++) {
                 if (employees[i] == null) {
                     employees[i] = employee;
-                    empNumber++;
+                    n++;
                     break;
                 }
             }
@@ -40,13 +42,13 @@ public class Group {
             System.out.println("Employee is null");
         } else {
             employees[i] = null;
-            empNumber--;
+            n--;
         }
     }
 
     public void cleanGroup() {
         Arrays.fill(employees, null);
-        empNumber = 0;
+        n = 0;
     }
 
     public void getEmpFromGroup() {
