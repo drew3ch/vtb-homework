@@ -20,7 +20,7 @@ public class Group {
 
     private static final int MAX_EMPLOYEE_COUNT = 10;
 
-    private Employee[] employees = new Employee[MAX_EMPLOYEE_COUNT];
+    private final Employee[] employees = new Employee[MAX_EMPLOYEE_COUNT];
     private int n = 0;
 
     public void addEmp(Employee employee) {
@@ -53,9 +53,9 @@ public class Group {
 
     public void getEmpFromGroup() {
         int j = 0;
-            for (int i = 0; i < employees.length; i++) {
-                if( employees[i] != null ) {
-                    System.out.println(employees[i].getInfo());
+            for (Employee employee : employees) {
+                if( employee != null ) {
+                    System.out.println(employee.getInfo());
                 } else {
                     j++;
                 }
