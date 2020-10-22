@@ -12,7 +12,7 @@ public class SwimmingPool extends Obstacle {
     @Override
     public boolean canPass(Participant participant) {
         boolean result = false;
-        String reason = null;
+        String reason = "";
         if (participant instanceof SwimAble) {
             result = participant.getMaxSwimVal() >= length;
         }

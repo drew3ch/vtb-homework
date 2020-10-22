@@ -9,13 +9,13 @@ public class Dictionary {
     }
 
     public String get(String key) {
-        String value = null;
+        String value = "";
         for (Pair pair : pairs) {
             if (pair != null && pair.getKey().equals(key)) {
                 value = pair.getValue() + "%n";
             }
         }
-        if (value == null) {
+        if (value == "") {
             value = "Value with key '" + key + "' is not in the dictionary%n----------%n";
         }
         return value;
