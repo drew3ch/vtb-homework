@@ -1,20 +1,23 @@
 package lesson1.homework23102020;
 
-public class Bird extends Participant implements JumpAble, FlyAble {
+public class Bird extends Participant implements Jumpable, Flyable {
+
+    private final int maxJumpVal;
+    private final int maxFlyVal;
 
     public Bird(String name, int maxJumpVal, int maxFlyVal) {
         super(name);
-        setMaxJumpVal(maxJumpVal);
-        setMaxFlyVal(maxFlyVal);
-    }
-
-    @Override
-    public void setMaxJumpVal(int maxJumpVal) {
         this.maxJumpVal = maxJumpVal;
+        this.maxFlyVal = maxFlyVal;
     }
 
     @Override
-    public void setMaxFlyVal(int maxFlyVal) {
-        this.maxFlyVal = maxFlyVal;
+    public int getMaxJumpVal() {
+        return maxJumpVal;
+    }
+
+    @Override
+    public int getMaxFlyVal() {
+        return maxFlyVal;
     }
 }

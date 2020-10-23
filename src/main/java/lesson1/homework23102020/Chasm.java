@@ -13,10 +13,11 @@ public class Chasm extends Obstacle {
     public boolean canPass(Participant participant) {
         boolean result = false;
         String reason = "";
-        if (participant instanceof FlyAble) {
-            result = participant.getMaxFlyVal() >= height;
+        if (participant instanceof Flyable) {
+            Flyable flyable = (Flyable) participant;
+            result = flyable.getMaxFlyVal() >= height;
         }
-        if(!(participant instanceof FlyAble)) { reason = ", так как не умеет летать"; }
+        if(!(participant instanceof Flyable)) { reason = ", так как не умеет летать"; }
         System.out.printf("Участник %s%s перелетел пропасть высотой %d" + reason + "%n",
                 participant.getName(), result ? "" : " не", height);
         return result;

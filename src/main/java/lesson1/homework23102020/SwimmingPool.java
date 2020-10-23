@@ -13,10 +13,11 @@ public class SwimmingPool extends Obstacle {
     public boolean canPass(Participant participant) {
         boolean result = false;
         String reason = "";
-        if (participant instanceof SwimAble) {
-            result = participant.getMaxSwimVal() >= length;
+        if (participant instanceof Swimmable) {
+            Swimmable swimmable = (Swimmable) participant;
+            result = swimmable.getMaxSwimVal() >= length;
         }
-        if(!(participant instanceof SwimAble)) { reason = ", так как не умеет плавать"; }
+        if(!(participant instanceof Swimmable)) { reason = ", так как не умеет плавать"; }
         System.out.printf("Участник %s%s перепрыл водоем длиной %d" + reason + "%n",
                 participant.getName(), result ? "" : " не", length);
         return result;

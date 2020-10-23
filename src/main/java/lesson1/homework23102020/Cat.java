@@ -1,21 +1,24 @@
 package lesson1.homework23102020;
 
-public class Cat extends Participant implements RunAble, JumpAble {
+public class Cat extends Participant implements Runable, Jumpable {
+
+    private final int maxRunVal;
+    private final int maxJumpVal;
 
     public Cat(String name, int maxRunVal, int maxJumpVal) {
         super(name);
-        setMaxRunVal(maxRunVal);
-        setMaxJumpVal(maxJumpVal);
-    }
-
-    @Override
-    public void setMaxRunVal(int maxRunVal) {
         this.maxRunVal = maxRunVal;
+        this.maxJumpVal = maxJumpVal;
     }
 
     @Override
-    public void setMaxJumpVal(int maxJumpVal) {
-        this.maxJumpVal = maxJumpVal;
+    public int getMaxRunVal() {
+        return maxRunVal;
+    }
+
+    @Override
+    public int getMaxJumpVal() {
+        return maxJumpVal;
     }
 
 }

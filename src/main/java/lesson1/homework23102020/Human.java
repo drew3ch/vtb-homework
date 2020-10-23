@@ -1,26 +1,30 @@
 package lesson1.homework23102020;
 
-public class Human extends Participant implements RunAble, JumpAble, SwimAble {
+public class Human extends Participant implements Runable, Jumpable, Swimmable {
+
+    private final int maxRunVal;
+    private final int maxJumpVal;
+    private final int maxSwimVal;
 
     public Human(String name, int maxRunVal, int maxJumpVal, int maxSwimVal) {
         super(name);
-        setMaxRunVal(maxRunVal);
-        setMaxJumpVal(maxJumpVal);
-        setMaxSwimVal(maxSwimVal);
-    }
-
-    @Override
-    public void setMaxJumpVal(int maxJumpVal) {
-        this.maxJumpVal = maxSwimVal;
-    }
-
-    @Override
-    public void setMaxRunVal(int maxRunVal) {
         this.maxRunVal = maxRunVal;
+        this.maxJumpVal = maxJumpVal;
+        this.maxSwimVal = maxSwimVal;
     }
 
     @Override
-    public void setMaxSwimVal(int maxSwimVal) {
-        this.maxSwimVal = maxSwimVal;
+    public int getMaxJumpVal() {
+        return maxJumpVal;
+    }
+
+    @Override
+    public int getMaxRunVal() {
+        return maxRunVal;
+    }
+
+    @Override
+    public int getMaxSwimVal() {
+        return maxSwimVal;
     }
 }
