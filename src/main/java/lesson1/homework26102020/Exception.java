@@ -44,6 +44,8 @@ public class Exception {
 
         try {
             newArr(arr);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.printf("One of the index of array not match [" + MAX_LENGTH + "x" + MAX_LENGTH + "]%n" + e);
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
