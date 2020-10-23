@@ -13,10 +13,11 @@ public class Wall extends Obstacle {
     public boolean canPass(Participant participant) {
         boolean result = false;
         String reason = "";
-        if (participant instanceof JumpAble) {
-            result = participant.getMaxJumpVal() >= height;
+        if (participant instanceof Jumpable) {
+            Jumpable jumpable = (Jumpable) participant;
+            result = jumpable.getMaxJumpVal() >= height;
         }
-        if(!(participant instanceof JumpAble)) { reason = ", так как не умеет прыгать"; }
+        if(!(participant instanceof Jumpable)) { reason = ", так как не умеет прыгать"; }
         System.out.printf("Участник %s%s перепрыгнул стену высотой %d" + reason + "%n",
                 participant.getName(), result ? "" : " не", height);
         return result;

@@ -1,14 +1,16 @@
 package lesson1.homework23102020;
 
-public class Fish extends Participant implements SwimAble {
+public class Fish extends Participant implements Swimmable {
+
+    private final int maxSwimVal;
 
     public Fish(String name, int maxSwimVal) {
         super(name);
-        setMaxSwimVal(maxSwimVal);
+        this.maxSwimVal = maxSwimVal;
     }
 
     @Override
-    public void setMaxSwimVal(int maxSwimVal) {
-        this.maxSwimVal = maxSwimVal;
+    public int getMaxSwimVal() {
+        return maxSwimVal;
     }
 }
