@@ -9,7 +9,7 @@ public class Exception {
 
         int result = 0;
 
-        if (arr.length != 4 || arr[0].length != 4) {
+        if (arr.length != MAX_LENGTH || arr[0].length != MAX_LENGTH) {
             throw new MyArraySizeException("This array is not [" + MAX_LENGTH + "x" + MAX_LENGTH + "] in size. Now array size is [" + arr.length + "x" + arr[0].length + "]");
         }
 
