@@ -9,16 +9,16 @@ public class Exception {
 
         int result = 0;
 
-        if (arr.length != MAX_LENGTH || arr[0].length != MAX_LENGTH) {
-            throw new MyArraySizeException("This array is not [" + MAX_LENGTH + "x" + MAX_LENGTH + "] in size. Now array size is [" + arr.length + "x" + arr[0].length + "]");
-        }
-
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                try {
-                    result += Integer.parseInt(arr[i][j]);
-                } catch (RuntimeException e) {
-                    throw new MyArrayDataException("Cell [" + i + "x" + j + "] contains a non-int type with value is '" + arr[i][j] + "'");
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr.length == MAX_LENGTH && arr[i].length == MAX_LENGTH) {
+                    try {
+                        result += Integer.parseInt(arr[i][j]);
+                    } catch (RuntimeException e) {
+                        throw new MyArrayDataException(i, j, arr[i][j]);
+                    }
+                } else {
+                    throw new MyArraySizeException(MAX_LENGTH, arr.length, arr[i].length);
                 }
             }
         }
@@ -44,8 +44,6 @@ public class Exception {
 
         try {
             newArr(arr);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.printf("One of the index of array not match [" + MAX_LENGTH + "x" + MAX_LENGTH + "]%n" + e);
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
