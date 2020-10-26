@@ -17,8 +17,10 @@ public class Exception {
                     } catch (RuntimeException e) {
                         throw new MyArrayDataException(i, j, arr[i][j]);
                     }
-                } else {
+                } else if (arr[i].length < MAX_LENGTH) {
                     throw new MyArraySizeException(MAX_LENGTH, i, arr[i].length);
+                } else {
+                    throw new MyArraySizeException(MAX_LENGTH, arr.length, arr[i].length);
                 }
             }
         }
