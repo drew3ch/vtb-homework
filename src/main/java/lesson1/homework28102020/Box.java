@@ -15,7 +15,7 @@ public class Box<T extends Fruit> {
         this.fruits.addAll(Arrays.asList(fruits));
     }
 
-    public float getWeight() {
+    public double getWeight() {
 
         if (fruits.size() == 0) {
             return 0;
@@ -25,7 +25,7 @@ public class Box<T extends Fruit> {
 
     }
 
-    public boolean compare(Box<? extends Fruit> box) {
+    public boolean compare(Box<?> box) {
 
         return this.getWeight() == box.getWeight();
 
