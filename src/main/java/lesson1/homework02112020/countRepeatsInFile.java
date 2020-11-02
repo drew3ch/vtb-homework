@@ -26,12 +26,16 @@ public class countRepeatsInFile {
                 line = br.readLine();
             }
         }
-        return (int) map.get(string);
+        if (map.get(string) != null) {
+            return (int) map.get(string);
+        } else {
+            return 0;
+        }
     }
 
     public static void main(String args[]) throws IOException {
 
-        System.out.println(countRepeatsInFile("Word1", "C:\\file.txt"));
+        System.out.println(countRepeatsInFile("Wwword1", "C:\\file.txt"));
 
     }
 }
