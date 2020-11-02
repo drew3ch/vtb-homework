@@ -33,7 +33,7 @@ public class countRepeatsInFile {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String args[]) throws IOException {
 
         countRepeatsInFile("Word1", "C:\\file.txt");
 
