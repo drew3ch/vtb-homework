@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class countRepeatsInFile {
 
@@ -33,7 +32,7 @@ public class countRepeatsInFile {
 
     public static void main(String args[]) throws IOException {
 
-        System.out.println(countRepeatsInFile(Paths.get("C:\\file.txt"), "aaa"));
+        System.out.println(countRepeatsInFile(Path.of("C:\\file.txt"), "aaa"));
 
     }
 }
