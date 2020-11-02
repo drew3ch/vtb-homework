@@ -1,41 +1,37 @@
 package lesson1.homework02112020;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class countRepeatsInFile {
 
-    public static int countRepeatsInFile(String string, String pathname) throws IOException {
-        Map map = new HashMap();
-        try (BufferedReader br = new BufferedReader(new FileReader(pathname))) {
-            String line = br.readLine();
-            while (line != null) {
-                String[] words = line.split(" ");
-                for (int i = 0; i < words.length; i++) {
-                    if (map.get(words[i]) == null) {
-                        map.put(words[i], 1);
-                    } else {
-                        int n = Integer.valueOf(String.valueOf(map.get(words[i])));
-                        n++;
-                        map.put(words[i], n);
-                    }
-                }
-                line = br.readLine();
+    public static int countRepeatsInFile(Path path, String sequence) throws IOException {
+        BufferedReader reader = Files.newBufferedReader(path);
+        StringBuilder sb = new StringBuilder();
+        int n = 0;
+        int nextChar;
+        while ((nextChar = reader.read()) != -1) {
+            if (sb.length() < sequence.length()) {
+                sb.append((char) nextChar);
+                continue;
+            } else if (sb.toString().equals(sequence)) {
+                n++;
             }
+            sb.deleteCharAt(0);
+            sb.append((char) nextChar);
         }
-        if (map.get(string) != null) {
-            return (int) map.get(string);
-        } else {
-            return 0;
+        if (sb.toString().equals(sequence)) {
+            n++;
         }
+        return n;
     }
 
     public static void main(String args[]) throws IOException {
 
-        System.out.println(countRepeatsInFile("Wwword1", "C:\\file.txt"));
+        System.out.println(countRepeatsInFile(Paths.get("C:\\file.txt"), "aaa"));
 
     }
 }
