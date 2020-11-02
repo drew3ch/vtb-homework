@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class countRepeatsInFile {
 
-    public static void countRepeatsInFile(String string, String pathname) throws IOException {
+    public static int countRepeatsInFile(String string, String pathname) throws IOException {
         Map map = new HashMap();
         try (BufferedReader br = new BufferedReader(new FileReader(pathname))) {
             String line = br.readLine();
@@ -19,7 +19,7 @@ public class countRepeatsInFile {
                         if (map.get(words[i]) == null) {
                             map.put(words[i], 1);
                         } else {
-                            int n = Integer.valueOf(String.valueOf(map.get(words[i])));
+                            int n = Integer.valueOf(String.valueOf(map.get(string)));
                             n++;
                             map.put(words[i], n);
                         }
@@ -28,14 +28,12 @@ public class countRepeatsInFile {
                 line = br.readLine();
             }
         }
-        for (Object key : map.keySet()) {
-            System.out.println(key + ": " + map.get(key));
-        }
+        return (int) map.get(string);
     }
 
     public static void main(String args[]) throws IOException {
 
-        countRepeatsInFile("Word1", "C:\\file.txt");
+        System.out.println(countRepeatsInFile("Word1", "C:\\file.txt"));
 
     }
 }
