@@ -15,14 +15,12 @@ public class countRepeatsInFile {
             while (line != null) {
                 String[] words = line.split(" ");
                 for (int i = 0; i < words.length; i++) {
-                    if (words[i].equals(string)) {
-                        if (map.get(words[i]) == null) {
-                            map.put(words[i], 1);
-                        } else {
-                            int n = Integer.valueOf(String.valueOf(map.get(string)));
-                            n++;
-                            map.put(words[i], n);
-                        }
+                    if (map.get(words[i]) == null) {
+                        map.put(words[i], 1);
+                    } else {
+                        int n = Integer.valueOf(String.valueOf(map.get(string)));
+                        n++;
+                        map.put(words[i], n);
                     }
                 }
                 line = br.readLine();
