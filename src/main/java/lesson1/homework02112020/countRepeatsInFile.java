@@ -1,27 +1,41 @@
 package lesson1.homework02112020;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class countRepeatsInFile {
 
-    private static int n = 0;
-
-    public static int countRepeatsInFile(String string, String pathname) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get(pathname), StandardCharsets.UTF_8);
-        Set<String> repeats = new HashSet<>(lines);
-        for (String line : repeats) if (line.contains(string)) n++;
-        return n;
+    public static void countRepeatsInFile(String string, String pathname) throws IOException {
+        Map map = new HashMap();
+        try (BufferedReader br = new BufferedReader(new FileReader(pathname))) {
+            String line = br.readLine();
+            while (line != null) {
+                String[] words = line.split(" ");
+                for (int i = 0; i < words.length; i++) {
+                    if (words[i].equals(string)) {
+                        if (map.get(words[i]) == null) {
+                            map.put(words[i], 1);
+                        } else {
+                            int n = Integer.valueOf(String.valueOf(map.get(words[i])));
+                            n++;
+                            map.put(words[i], n);
+                        }
+                    }
+                }
+                line = br.readLine();
+            }
+        }
+        for (Object key : map.keySet()) {
+            System.out.println(key + ": " + map.get(key));
+        }
     }
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-        System.out.println(countRepeatsInFile("Word1", "C:\\file.txt"));
+        countRepeatsInFile("Word1", "C:\\file.txt");
 
     }
 }
