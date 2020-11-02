@@ -18,7 +18,7 @@ public class countRepeatsInFile {
                     if (map.get(words[i]) == null) {
                         map.put(words[i], 1);
                     } else {
-                        int n = Integer.valueOf(String.valueOf(map.get(string)));
+                        int n = Integer.valueOf(String.valueOf(map.get(words[i])));
                         n++;
                         map.put(words[i], n);
                     }
