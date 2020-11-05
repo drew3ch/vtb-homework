@@ -2,8 +2,9 @@ package lesson07.homework;
 
 public class Orange extends Fruit {
 
-    public Orange() {
-        super(1.5f);
+    @Override
+    public double getWeight() {
+        return 1.5;
     }
 
 }
