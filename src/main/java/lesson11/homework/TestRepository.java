@@ -22,11 +22,11 @@ public class TestRepository {
 
         userRepository.insert(new User(null, "ccc", "ccc"));
         userRepository.insert(new User(null, "ddd", "ddd"));
-        userRepository.insert(new User(9L, "ddd", "ddd"));
+        userRepository.insert(new User(1L, "ddd", "ddd"));
 
-        userRepository.update(new User(9L, "newusername", "newpassword"));
+        userRepository.update(new User(5L, "newusername", "newpassword"));
 
-        userRepository.delete(1L);
+        userRepository.delete(5L);
 
         List<User> users = userRepository.findAll();
         System.out.println(users);

@@ -251,7 +251,7 @@ public class Repository<T> {
         }
         query.deleteCharAt(query.length() - 1);
         query.append(" where ");
-        query.append(" id = ? ");
+        query.append("id = ?");
         query.append(";");
         System.out.println("Update statement: " + query);
         return connection.prepareStatement(query.toString());
@@ -262,7 +262,7 @@ public class Repository<T> {
         query.append("delete from ");
         query.append(tableName);
         query.append(" where ");
-        query.append(" id = ? ");
+        query.append("id = ?");
         query.append(";");
         System.out.println("Delete statement: " + query);
         return connection.prepareStatement(query.toString());
