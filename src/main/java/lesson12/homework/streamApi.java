@@ -1,13 +1,9 @@
 package lesson12.homework;
 
-import javax.lang.model.element.Element;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toMap;
 
 public class streamApi {
 
