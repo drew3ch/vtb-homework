@@ -9,7 +9,7 @@ import java.nio.file.Path;
 public class countRepeatsInFile {
 
     public static int countRepeatsInFile(Path path, String sequence) throws IOException {
-        try (BufferedReader  reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+        try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             StringBuilder sb = new StringBuilder();
             int n = 0;
             int nextChar;
