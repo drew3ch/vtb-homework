@@ -38,8 +38,8 @@ public class streamApi {
                 .sum());
 
         System.out.println(Stream.of(s)
-                .sorted()
                 .limit(3)
+                .sorted()
                 .collect(Collectors.joining(" ")));
 
     }
