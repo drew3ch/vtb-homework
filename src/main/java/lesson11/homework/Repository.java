@@ -42,13 +42,16 @@ public class Repository<T> {
         this.tableName = dbTable.tableName();
 
         this.columns = new ArrayList<>();
-        int countDbId = 0;
+        boolean dbIdFound = false;
         for (Field field : repositoryClass.getDeclaredFields()) {
             DbId dbId = field.getAnnotation(DbId.class);
             if (dbId != null) {
+                if (dbIdFound) {
+                    throw new IllegalArgumentException("@DbId more than one in class " + repositoryClass.getSimpleName());
+                }
                 ColumnInfo columnInfo = new ColumnInfo(field.getName(), field.getName(), field.getType(), true);
                 columns.add(columnInfo);
-                countDbId++;
+                dbIdFound = true;
                 continue;
             }
             DbColumn dbColumn = field.getAnnotation(DbColumn.class);
@@ -56,10 +59,8 @@ public class Repository<T> {
                 ColumnInfo columnInfo = new ColumnInfo(field.getName(), dbColumn.columnName(), field.getType(), false);
                 columns.add(columnInfo);
             }
-            if (countDbId == 0) {
-                throw new IllegalArgumentException("@DbId not found.");
-            } else if (countDbId > 1) {
-                throw new IllegalArgumentException("@DbId more than one.");
+            if (dbId == null) {
+                throw new IllegalArgumentException("@DbId not found in class " + repositoryClass.getSimpleName());
             }
         }
         createTableIfNotExists();
